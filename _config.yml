@@ -2,8 +2,7 @@
 title: jeqo's blog
 email: quilcate.jorge@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
-  This blog is about technologies I really like as Java, Oracle Fusion
-  Middleware, AngularJS, MongoDB, DevOps, and so on.
+  About java, oracle fusion middleware, devops, poc, and more
 baseurl: "/blog" # the subpath of your site, e.g. /blog/
 url: "http://yourdomain.com" # the base hostname & protocol for your site
 twitter_username: jeqo89
