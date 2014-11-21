@@ -1,11 +1,10 @@
 ---
 layout: page
-title: About
-permalink: /about/
+title: "About"
+description: ""
 ---
+{% include JB/setup %}
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](http://jekyllrb.com/)
+I’m Jorge Quilcate: peruvian, software developer, passionate about Java, Oracle’s Fusion Middleware stack and new technology trends like NoSQL, DevOps, and Cloud Computing.
 
-You can find the source code for the Jekyll new theme at: [github.com/jglovier/jekyll-new](https://github.com/jglovier/jekyll-new)
-
-You can find the source code for Jekyll at [github.com/jekyll/jekyll](https://github.com/jekyll/jekyll)
+Currently, I’m working as Senior Consultant at [Sysco AS](http://sysco.no) - Middleware Department. And I certified as Oracle IT Architecture SOA 2013 Certified Architecture Specialist, Oracle Unified Business Process Management Suite 11g Certified Implementation Specialist, and Oracle Certified Associate, Oracle WebLogic Server 11g System Administrator Certification among other.
