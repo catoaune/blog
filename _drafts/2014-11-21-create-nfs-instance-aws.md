@@ -13,4 +13,13 @@ and I want to make this process repeatable, so I don't want to wait 1 hour each 
 So I found this solution: [How to setup an Amazon AWS EC2 NFS Share](https://theredblacktree.wordpress.com/2013/05/23/how-to-setup-a-amazon-aws-ec2-nfs-share/)
 
 But to make it more reusable, I create a Vagrant & Chef configuration to replicate and share this method
-here: [https://github.com/jeqo/vagrant-aws-chef-nfs](https://github.com/jeqo/vagrant-aws-chef-nfs)
+here: [NFS-Server branch](https://github.com/jeqo/vagrant-aws-chef-nfs/tree/nfs-server)
+
+## What are the steps?
+
+0. You need to install Vagrant (vagrant-aws and vagrant-omnibus) and Chef SDK
+1. You have to create Chef Server account
+2. You have to create a Vagrant configuration
+3. Test it.
+
+Well, I create a configuration on GitHub and I'll show you how to use it:
