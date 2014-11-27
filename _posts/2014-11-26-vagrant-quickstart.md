@@ -320,19 +320,19 @@ chef:
 
 2. Add the "yaml" library:
 
-    ```ruby
-    require "yaml"
-    ```
+{% highlight ruby %}
+  require "yaml"
+{% endhighlight %}
 
 3. And read and use the properties:
 
-    ```ruby
-      ...
-      props = YAML.load_file("vagrant.rb")
+{% highlight ruby %}
+...
+  props = YAML.load_file("vagrant.rb")
 
-      config.vm.box = "#{props['box']['name']}"  
-      ...
-    ```
+  config.vm.box = "#{props['box']['name']}"  
+...
+{% endhighlight %}
 
 Well, it's a long but (i hope) an easy post. I hope you enjoyed :)
 
@@ -341,7 +341,7 @@ Here is the [Git repository](https://github.com/jeqo/vagrant-quickstart)
 Feel free to send your comments and question!
 
 
-> Disclaimer: I'm not a Ruby developer (yet), so if I'm using a wrong term about ruby code sorry :)  I just trying to describe the source code, that is enough for Vagrant files.
+> Disclaimer: I'm not a Ruby developer (yet), so if I'm using a wrong term about ruby code sorry :)  I just trying to describe the source code, that I think is enough for Vagrant files.
 
 
 *jeqo*
