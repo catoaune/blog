@@ -1,12 +1,25 @@
 <div class="section">
-  <h3 class="widgettitle">Sign me up!</h3>
-  <p class="note">If you want to follow my blog:</p>
-  <ul class="subscribe-options">
-    <li class="twitter-badge"></li>
-    <li class="googleplus-badge"></li>
-    <li class="rss-badge"></li>
+  <h3>Latest Posts</h3>
+  <ul class="posts">
+    {% for post in site.posts limit:20 %}
+    <li>
+      <span>{{ post.date | date_to_string }}</span> &raquo;
+      <a href="{{ BASE_PATH }}{{ post.url }}">
+        {{ post.title }}
+      </a>
+    </li>
+    {% endfor %}
   </ul>
 </div>
+<br/>
+<div class="tag-cloud">
+  <h3>Tags</h3>
+  <ul class="tag_box inline">
+    {% assign tags_list = site.tags %}
+    {% include JB/tags_list %}
+  </ul>
+</div>
+
 <br/>
 <div class="section">
   <h3 class="widgettitle">Twitter</h3>
