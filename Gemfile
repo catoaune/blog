@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'github-pages'
 gem 'jekyll'
 gem 'coderay'
 gem 'sass', '3.4.5'
