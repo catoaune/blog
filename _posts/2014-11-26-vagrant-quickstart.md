@@ -35,7 +35,7 @@ Now you can search an specific distribution and use it whenever you want.
 
 Ok, I have a base box, how can I use it to create a new box? The basic artifact you need is a Vagrant file:
 
-```bash
+```shell
 mkdir vagrant-box
 vagrant init
 ```
@@ -155,7 +155,7 @@ Normally (sadly), cloud base box comes with VMDK disks formats. If you are lucky
 
 1. Create an script called *"bootstrap.sh"* on your working directory, and add these lines:
 
-```bash
+```shell
 pvcreate /dev/sdb
 vgextend VolGroup /dev/sdb
 lvextend /dev/VolGroup/lv_root /dev/sdb
@@ -209,7 +209,7 @@ As I install Oracle Fusion Middleware products, they require some amount of swap
 
 To resolve this, add this script called *"increase_swap.sh"* on your working directory:
 
-```bash
+```shell
 #!/bin/sh
 
 # size of swapfile in megabytes
