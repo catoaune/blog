@@ -6,7 +6,7 @@ categories: devops
 tags: [vagrant, chef, virtualbox]
 ---
 
-I have some months of experience working with Vagrant and I think it's owesome! Integration with almost all kind of virtualization platforms: VirtalBox, VMware, Docker, AWS EC2, Hyper-V and so on. Also it's able to use differente Provisioners: Chef, Puppet, Shell, Docker, Ansible. I really like it.
+I have some months of experience working with Vagrant and I think it's owesome! Integration with almost all kind of virtualization platforms: VirtalBox, VMware, Docker, AWS EC2, Hyper-V and so on. Also it's able to use differente Provisioners: Chef, Puppet, bash, Docker, Ansible. I really like it.
 
 So, when I start working with Vagrant I choose VirtualBox as my virtualization platform and Chef as my provisioner, and when trying different configurations I start finding some tips to share:
 
@@ -35,7 +35,7 @@ Now you can search an specific distribution and use it whenever you want.
 
 Ok, I have a base box, how can I use it to create a new box? The basic artifact you need is a Vagrant file:
 
-```shell
+```bash
 mkdir vagrant-box
 vagrant init
 ```
@@ -155,7 +155,7 @@ Normally (sadly), cloud base box comes with VMDK disks formats. If you are lucky
 
 1. Create an script called *"bootstrap.sh"* on your working directory, and add these lines:
 
-```shell
+```bash
 pvcreate /dev/sdb
 vgextend VolGroup /dev/sdb
 lvextend /dev/VolGroup/lv_root /dev/sdb
@@ -191,9 +191,9 @@ And then add this code to your *Vagrantfile*:
 
   if ARGV[0] == "up" && ! File.exist?("./disk1.vdi")
     # Run script to map new disk
-    config.vm.provision "shell", path: "bootstrap.sh"
+    config.vm.provision "bash", path: "bootstrap.sh"
     # Run script to increase swap memory
-    config.vm.provision "shell", path: "increase_swap.sh"
+    config.vm.provision "bash", path: "increase_swap.sh"
   end
 ...
 ```
@@ -209,7 +209,7 @@ As I install Oracle Fusion Middleware products, they require some amount of swap
 
 To resolve this, add this script called *"increase_swap.sh"* on your working directory:
 
-```shell
+```bash
 #!/bin/sh
 
 # size of swapfile in megabytes
@@ -245,7 +245,7 @@ If you destroy and up your box now, you will have a new box with 8GB of swap mem
 
 ### Get Started with Chef (Provisioning!)
 
-What if you want to install some package or service? You can do this with a shell (as we increase memory and disk) but is not flexible and can take a lot of effort. At this days provisioning is a trend and products as Docker, Puppet and Chef are getting very popular, so I will use Chef to show you how to install Apache and start HTTP service:
+What if you want to install some package or service? You can do this with a bash (as we increase memory and disk) but is not flexible and can take a lot of effort. At this days provisioning is a trend and products as Docker, Puppet and Chef are getting very popular, so I will use Chef to show you how to install Apache and start HTTP service:
 
 > To learn more about chef: [Learn Chef](http://learn.getchef.com)
 
