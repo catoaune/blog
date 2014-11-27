@@ -39,7 +39,7 @@ bing_verify:
 timezone:    America/New_York
 future:      true
 highlighter: pygments
-markdown:    redcarpets
+markdown:    redcarpet
 gems:
   - jekyll-sitemap
 sass:
