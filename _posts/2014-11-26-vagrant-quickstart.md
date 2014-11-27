@@ -246,7 +246,8 @@ What if you want to install some package or service? You can do this with a shel
 
 > To learn more about chef: [Learn Chef](http://learn.getchef.com)
 
-1. Create the following directories and create a file:
+
+Create the following directories and create a file:
 
 chef/cookbooks/http/recipes/install-httpd.rb
 
@@ -267,6 +268,7 @@ service "httpd" do
 
 end
 {% endhighlight %}
+
 
 This recipe *install* "httpd" package and ensure service "httpd" is *started* and will be started when the machine is restarted.
 
@@ -301,7 +303,7 @@ What if you want to repeat this process to create another box? You can parametri
 
 To do this:
 
-1. Create a file like this one called "vagrant.rb":
+* Create a file like this one called "vagrant.rb":
 
 {% highlight ruby %}
 box:
@@ -318,21 +320,23 @@ chef:
   repo_location: "C:/dev/jeqo/chef-repo"
 {% endhighlight %}
 
-2. Add the "yaml" library:
+
+* Add the "yaml" library:
 
 {% highlight ruby %}
   require "yaml"
 {% endhighlight %}
 
-3. And read and use the properties:
 
-{% highlight ruby %}
+* And read and use the properties:
+
+```ruby
 ...
   props = YAML.load_file("vagrant.rb")
 
   config.vm.box = "#{props['box']['name']}"  
 ...
-{% endhighlight %}
+```
 
 Well, it's a long but (i hope) an easy post. I hope you enjoyed :)
 
