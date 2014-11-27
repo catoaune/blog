@@ -9,13 +9,13 @@ highlighter: pygments
 # so be sure to set them if your theme uses them.
 #
 title : jeqo's blog
-tagline: Site Tagline
+tagline:
 author :
   name : Jorge Quilcate
   email : quilcate.jorge@gmail.com
   github : jeqo
   twitter : jeqo89
-  feedburner : feedname
+  feedburner : jeqo
 
 # The production_url is only used when full-domain names are needed
 # such as sitemap.txt
@@ -82,7 +82,7 @@ JB :
   comments :
     provider : disqus
     disqus :
-      short_name : jekyllbootstrap
+      short_name : jeqoblog
     livefyre :
       site_id : 123
     intensedebate :
