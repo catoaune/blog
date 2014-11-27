@@ -8,7 +8,7 @@ tagline: posts
 <ul>
   {% for post in site.posts %}
     <li>
-      <a href="{{ post.url }}">{{ post.title }}</a>
+    <a href="{{ BASE_PATH }}{{ post.url }}">{{ post.title }}</a>
       <p>{{ post.excerpt }} ...</p>
     </li>
   {% endfor %}
