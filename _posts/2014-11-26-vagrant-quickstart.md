@@ -298,7 +298,7 @@ Now if you destroy and re-create your Vagrant box again you could test that your
 
 ### Properties file
 
-The last trick that I want to share is create a properties file for your Vagrant configuration.
+The last trick I want to share is how to create a properties file for your Vagrant configuration.
 
 What if you want to repeat this process to create another box? You can parametrized your Vagrantfile with a properties file.
 
