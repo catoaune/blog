@@ -6,7 +6,9 @@ categories: devops
 tags: [vagrant, chef, virtualbox]
 ---
 
-I have some months of experience working with Vagrant and I found it owesome! Integration with almost all kind of virtualization platforms: VirtalBox, VMware, Docker, AWS EC2, Hyper-V and so on. Also it's able to use differente Provisioners: Chef, Puppet, Shell, Docker, Ansible. So, when I start working with Vagrant I choose VirtualBox as my virtualization platform and Chef as my provisioner, and trying different configurations I found some tips to share:
+I have some months of experience working with Vagrant and I think it's owesome! Integration with almost all kind of virtualization platforms: VirtalBox, VMware, Docker, AWS EC2, Hyper-V and so on. Also it's able to use differente Provisioners: Chef, Puppet, Shell, Docker, Ansible. I really like it.
+
+So, when I start working with Vagrant I choose VirtualBox as my virtualization platform and Chef as my provisioner, and when trying different configurations I start finding some tips to share:
 
 1. First step: Should I create my base box? or should I use a base box already created?
 2. Can I increase my disk space? how?
@@ -14,24 +16,24 @@ I have some months of experience working with Vagrant and I found it owesome! In
 
 So I decide to create a post to start creating Vagrant boxes and resolve this issues. Let's start:
 
-First of all, install [Vagrant](https://www.vagrantup.com/downloads.html)
+> First of all, install [Vagrant](https://www.vagrantup.com/downloads.html)
 
 
 
 ## Create a Vagrant Box
 
-If you read Vagrant documentation, you will find everything is based in a **box**. What's a box? In my opinion, a box is an abstraction from a base virtual environment: It has an OS installed, some basic configuration, and packaged to be reused. For instance: A VirtualBox *box* is a VirtualBox VM with an OS installed, a disk space defined, and a basic configuration. An Amazon Web Service EC2 *box* is a [file containing an AMI id](https://github.com/mitchellh/vagrant-aws/tree/master/example_box), that is a Virtual Machine template from AWS.
+If you read Vagrant documentation, you will find everything is based in a **box**. What's a box? In my opinion, a box is an abstraction from a base virtual environment: It has an OS installed, some basic configuration, and packaged to be reused. And what's a **base box**? A base box is a template to create boxes. For instance: A VirtualBox *base box* is a VirtualBox VM with an OS installed, a disk space defined, and a basic configuration, and a *box* is a Virtual Machine up and running. An Amazon Web Service EC2 *box* is an instance and a *base box* is a [file containing an AMI id](https://github.com/mitchellh/vagrant-aws/tree/master/example_box), that is a Virtual Machine template from AWS.
 
 Now that I know what is a box, how can I created? You can created by yourself: creating a simple VM, installing a base OS, and running a Vagrant command to create a "base box". The process to do this depends on what virtualization platform you are using, for example: on VirtualBox you can do [this](https://docs.vagrantup.com/v2/virtualbox/boxes.html) (official documentation) or a [more detailed way](http://www.skoblenick.com/vagrant/creating-a-custom-box-from-scratch/).
 
-This process is easy, but what if you want to use a cloud base box to be sure that anyone will change a package or configuration? There are two sites that  I found where you can use or download base boxes:
+This process is easy, but what if you want to use a cloud base box to be sure that anyone will change a package or configuration? There are two sites that I found where you can search, use directly or download base boxes:
 
 * [Vagrantbox.es](http://www.vagrantbox.es/)
-* [Vagrant Cloud](https://vagrantcloud.com/) the official site
+* [Vagrant Cloud](https://vagrantcloud.com/) the Vagrant's official site
 
 Now you can search an specific distribution and use it whenever you want.
 
-Ok, I have a base box, how can I use it to create a new box?
+Ok, I have a base box, how can I use it to create a new box? The basic artifact you need is a Vagrant file:
 
 ```bash
 mkdir vagrant-box
@@ -48,7 +50,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 end
 ```
 
-This script *ruby* script starts a method where you have a variable config from Vagrant.configure("2"). This variable is which you use to start defining your box
+This *ruby* script starts a *method* where you have a variable *config* from *Vagrant.configure("2")*. This variable is what you use to start defining your *box* properties.
 
 > First important command: **vagrant init**
 
@@ -57,6 +59,7 @@ This is not enough to create a box. You need two more attributes:
 ```ruby
 ...
   # URL or path to base box file
+  # config.vm.box_url = "https://storage.us2.oraclecloud.com/v1/istoilis-istoilis/vagrant/oel65-64.box"
   config.vm.box_url = "file://c:/boxes/oel65-64.box"
 ...
 ```
@@ -257,15 +260,11 @@ Add this code to the file:
 
 ```ruby
 package "httpd" do
-
   action :install
-
 end
 
 service "httpd" do
-
   action [ :start, :enable ]
-
 end
 ```
 
@@ -277,15 +276,10 @@ To call this simple recipe from Vagrant you need to add this to your file:
 
 ```ruby
 ...
-
   config.vm.provision "chef_solo" do |chef|
-
     chef.cookbooks_path = "../chef/cookbooks"
-
     chef.add_recipe "http::install-httpd"
-
   end
-
 ...
 ```
 
@@ -348,5 +342,11 @@ Feel free to send your comments and question!
 
 > Disclaimer: I'm not a Ruby developer (yet), so if I'm using a wrong term about ruby code sorry :)  I just trying to describe the source code, that I think is enough for Vagrant files.
 
+#### Resources
+
+* Vagrant Docs: [https://docs.vagrantup.com/v2/](https://docs.vagrantup.com/v2/)
+* Increase Swap: [http://programmaticponderings.wordpress.com/2013/12/19/scripting-linux-swap-space/](http://programmaticponderings.wordpress.com/2013/12/19/scripting-linux-swap-space/)
+* Add a new disk to VirtualBox VM with Vagrant: [https://gist.github.com/leifg/4713995](https://gist.github.com/leifg/4713995)
+* Getting started with Chef: [https://learn.getchef.com](https://learn.getchef.com)
 
 by: *jeqo*
