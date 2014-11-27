@@ -33,20 +33,20 @@ Now you can search an specific distribution and use it whenever you want.
 
 Ok, I have a base box, how can I use it to create a new box?
 
-{% highlight bash %}
+```bash
 mkdir vagrant-box
 vagrant init
-{% endhighlight %}
+```
 
 Running this creates a *Vagrantfile* that contains the information to create a new box.
 
-{% highlight ruby %}
+```ruby
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "base"
 end
-{% endhighlight %}
+```
 
 This script *ruby* script starts a method where you have a variable config from Vagrant.configure("2"). This variable is which you use to start defining your box
 
@@ -54,12 +54,12 @@ This script *ruby* script starts a method where you have a variable config from 
 
 This is not enough to create a box. You need two more attributes:
 
-{% highlight ruby %}
+```ruby
 ...
   # URL or path to base box file
   config.vm.box_url = "file://c:/boxes/oel65-64.box"
 ...
-{% endhighlight %}
+```
 
 With this you can execute *vagrant up* to run the script. This will create a VM on VirtualBox with the same configuration as *base box*.
 
@@ -81,7 +81,7 @@ Let's start changing VM resources:
 
 As this is a virtualization platform specific requirement, you have to make these changes on an embedded method:
 
-{% highlight ruby %}
+```ruby
 ...
   config.vm.provider :virtualbox do |vb|
     vb.customize ["modifyvm", :id, "--memory", "2048"]
@@ -90,7 +90,7 @@ As this is a virtualization platform specific requirement, you have to make thes
     vb.customize ["modifyvm", :id, "--chipset", "ich9"]
   end
 ...
-{% endhighlight %}
+```
 
 In VirtualBox, these are the most important parameters: RAM memory (in MB), VM name, CPUs number, and chipset.
 
@@ -109,31 +109,31 @@ Two more important parameters:
 * **Network**: By default your box use a NAT network that VirtualBox creates out-of-the-box. But, what if you (obviously) want to connect to your box? You need to use the "Host-only" network:
 
 
-{% highlight ruby %}
+```ruby
 ...
   config.vm.network :private_network, ip: "192.168.56.XYZ"
 ...
-{% endhighlight %}
+```
 
 > Normally this is the network IP: 192.168.56.1, so your VMs use this IP as gateway.
 
 * **Shared Directories**: Using VirtualBox utility to create shared directories is annoying! With Vagrant is as easy as add thit to your script:
 
-{% highlight ruby %}
+```ruby
 ...
   # Mount c:\data directory to /data directory on box. mount_options is optional
   config.vm.synced_folder "/data" , "/data", :mount_options => ["dmode=777", "fmode=777"]
 ...
-{% endhighlight %}
+```
 
 Some other parameters:
 
-{% highlight ruby %}
+```ruby
 ...
   # Hostname
   config.vm.hostname = "basemachine"
 ...
-{% endhighlight %}
+```
 
 For more information: [Vagrant Docs](https://docs.vagrantup.com/v2/vagrantfile/index.html)
 
@@ -152,18 +152,18 @@ Normally (sadly), cloud base box comes with VMDK disks formats. If you are lucky
 
 1. Create an script called *"bootstrap.sh"* on your working directory, and add these lines:
 
-{% highlight bash %}
+```bash
 pvcreate /dev/sdb
 vgextend VolGroup /dev/sdb
 lvextend /dev/VolGroup/lv_root /dev/sdb
 resize2fs /dev/VolGroup/lv_root
-{% endhighlight %}
+```
 
 > VolGroup and lv_root can change on different distributions. But it works for me on Ubuntu also.
 
 And then add this code to your *Vagrantfile*:
 
-{% highlight ruby %}
+```ruby
 ...
   config.vm.provider :virtualbox do |vb|
   ...
@@ -193,7 +193,7 @@ And then add this code to your *Vagrantfile*:
     config.vm.provision "shell", path: "increase_swap.sh"
   end
 ...
-{% endhighlight %}
+```
 
 This creates a VDI disk file with 100GB of capacity. And is attached to your OS.
 
@@ -206,7 +206,7 @@ As I install Oracle Fusion Middleware products, they require some amount of swap
 
 To resolve this, add this script called *"increase_swap.sh"* on your working directory:
 
-{% highlight bash %}
+```bash
 #!/bin/sh
 
 # size of swapfile in megabytes
@@ -231,7 +231,7 @@ fi
 df -h
 cat /proc/swaps
 cat /proc/meminfo | grep Swap
-{% endhighlight %}
+```
 
 If you destroy and up your box now, you will have a new box with 8GB of swap memory added and 100GB of additional disk space.
 
@@ -255,7 +255,7 @@ Chef base artifacts are Cookbooks that group common Recipes. For example you can
 
 Add this code to the file:
 
-{% highlight ruby %}
+```ruby
 package "httpd" do
 
   action :install
@@ -267,14 +267,15 @@ service "httpd" do
   action [ :start, :enable ]
 
 end
-{% endhighlight %}
+```
 
 
 This recipe *install* "httpd" package and ensure service "httpd" is *started* and will be started when the machine is restarted.
 
 To call this simple recipe from Vagrant you need to add this to your file:
 
-{% highlight ruby %}
+
+```ruby
 ...
 
   config.vm.provision "chef_solo" do |chef|
@@ -286,7 +287,7 @@ To call this simple recipe from Vagrant you need to add this to your file:
   end
 
 ...
-{% endhighlight %}
+```
 
 > *chef-solo* is when you use your client independently, and *chef-client* is when you use a Chef Server
 
@@ -305,7 +306,7 @@ To do this:
 
 * Create a file like this one called "vagrant.rb":
 
-{% highlight ruby %}
+```ruby
 box:
   name: "base-machine"
   disk_path: "./disk1.vdi"
@@ -318,14 +319,14 @@ box:
   swap_memory: 4096
 chef:
   repo_location: "C:/dev/jeqo/chef-repo"
-{% endhighlight %}
+```
 
 
 * Add the "yaml" library:
 
-{% highlight ruby %}
+```ruby
   require "yaml"
-{% endhighlight %}
+```
 
 
 * And read and use the properties:
