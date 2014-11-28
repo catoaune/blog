@@ -17,7 +17,7 @@ Once I started to read the chapters, I found it quite interesting because of the
 
 It looks like a really long book (572 pages), and it is. But this is justified because it takes a great approach from concepts to examples combined with experiences and source code. This could help you to feel more confident about your SOA design decisions.
 
-## Must Read parts
+## "Must Read" parts
 
 
 * **Chapter 1 - SOA Frameworks**: I think these frameworks are quite important to apply on SOA design, for example: *Object and XML Modeling*, if they are not designed well, could generate an implementation hell: huge and heavy data types, rare and indescribable names. Also gives an introduction to AIA that can give you a easy-to-learn guide about SOA layers, components, and common terms (Application Business Connector Services, Enterprise Business Flows and Services, and so on).
