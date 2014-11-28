@@ -340,7 +340,7 @@ Here is the [Git repository](https://github.com/jeqo/vagrant-quickstart)
 Feel free to send your comments and question!
 
 
-> Disclaimer: I'm not a Ruby developer (yet), so if I'm using a wrong term about ruby code sorry :)  I just trying to describe the source code, that I think is enough for Vagrant files.
+> Disclosure: I'm not a Ruby developer (yet), so if I'm using a wrong term about ruby code sorry :)  I just trying to describe the source code, that I think is enough for Vagrant files.
 
 #### Resources
 
