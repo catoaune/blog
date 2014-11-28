@@ -300,7 +300,7 @@ To do this:
 
 * Create a file like this one called "vagrant.rb":
 
-```ruby
+```yaml
 box:
   name: "base-machine"
   disk_path: "./disk1.vdi"
@@ -323,7 +323,7 @@ chef:
 ```
 
 
-* And read and use the properties:
+* Then read and use properties:
 
 ```ruby
 ...
