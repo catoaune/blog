@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Vagrant Quickstart
-tagline: How to create Vagrant boxes and solve some issues
+tagline:
 categories: devops
 tags: [vagrant, chef, virtualbox]
 ---

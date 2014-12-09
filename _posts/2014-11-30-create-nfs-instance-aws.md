@@ -1,7 +1,6 @@
 ---
 layout: post
-title: Create a NFS instance on AWS
-tagline: using Vagrant and Chef
+title: Create a NFS instance on AWS using Vagrant and Chef
 categories: devops
 tags: [nfs, vagrant, chef, aws]
 ---

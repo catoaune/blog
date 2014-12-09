@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Book Review: Applied SOA Patterns on the Oracle Platform"
-tagline:
 categories: middleware
 tags: [oracle, soa, patterns, osb]
 ---
