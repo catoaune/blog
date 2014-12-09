@@ -5,7 +5,7 @@ categories: devops
 tags: [oracle, fusion, middleware, bpm, 12c, chef, supermarket]
 ---
 
-Provisioning tools have change the way we create software environments: How much time we spend installing OS, databases, configuring platforms, applications? Now you can translate this steps into code, getting the software development benefits and challenges from into infrastructure: versioning, reuse, continuous improvement.
+Provisioning tools have change the way we create software environments: How much time we spend installing OS, databases, configuring platforms, applications? Now you can translate this steps into code, getting the software development benefits and challenges into infrastructure: versioning, reuse, continuous improvement.
 
 In this post, I will show you how to provision Oracle SOA Suite 12c using a Chef cookbook that I created and shared it on [Chef Supermarket](http://supermarket.chef.io).
 
