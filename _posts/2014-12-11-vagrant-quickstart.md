@@ -348,5 +348,3 @@ Feel free to send your comments and question!
 * Increase Swap: [http://programmaticponderings.wordpress.com/2013/12/19/scripting-linux-swap-space/](http://programmaticponderings.wordpress.com/2013/12/19/scripting-linux-swap-space/)
 * Add a new disk to VirtualBox VM with Vagrant: [https://gist.github.com/leifg/4713995](https://gist.github.com/leifg/4713995)
 * Getting started with Chef: [https://learn.getchef.com](https://learn.getchef.com)
-
-by: *jeqo*
